@@ -1,7 +1,7 @@
-export const storeLoginSession = (isLoggedIn: boolean, token: string) => {
+export const storeLoginSession = (loggedIn: boolean, token: string) => {
   try {
     const sessionData = {
-      isLoggedIn,
+      loggedIn,
       token,
     };
     sessionStorage.setItem("loginInfo", JSON.stringify(sessionData));
@@ -17,7 +17,7 @@ export const retrieveLoginSession = () => {
       const sessionData = JSON.parse(sessionDataJson);
       return sessionData;
     } else {
-      const sessionData = { isLoggedIn: false, token: "" };
+      const sessionData = { loggedIn: false, token: "" };
       return sessionData;
     }
   } catch (error) {

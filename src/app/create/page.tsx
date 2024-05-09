@@ -1,15 +1,11 @@
 "use client";
+import { useAuthContext } from "@/context";
 import { retrieveLoginSession } from "@/utils";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 const createPage = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(null); // Track login state
+  const { userSession, setUserSession } = useAuthContext();
 
-  const sessionData = retrieveLoginSession();
-  useEffect(() => {
-    const sessionData = retrieveLoginSession();
-    setIsLoggedIn(sessionData && sessionData.isLoggedIn); // Update state based on session data
-  }, []);
   const router = useRouter();
 
   const [applicationDate, setApplicationDate] = useState(Date); // Date object
@@ -49,10 +45,9 @@ const createPage = () => {
       setErrorMessage(error.message);
     }
   };
-
-  return (
-    <div>
-      {isLoggedIn === true ? (
+  if (userSession.loggedIn) {
+    return (
+      <div>
         <div className=" flex flex-col justify-center ">
           <p className=" text-sm font-extra-light my-4 text-center">
             Adding these details about your study permit case will help us and
@@ -244,11 +239,11 @@ const createPage = () => {
             </button>
           </form>
         </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
-  );
+      </div>
+    );
+  } else {
+    router.push("/");
+  }
 };
 
 export default createPage;

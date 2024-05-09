@@ -1,5 +1,4 @@
 import { CustomForm } from "@/components";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -9,7 +8,7 @@ export default function Home() {
         <h3></h3>
 
         <div className="p-8 border border-1 border-gray-300 rounded-lg ">
-          <CustomForm formType={false} />
+          <CustomForm formType={"login"} />
         </div>
         <p>Do not have an account yet ?</p>
         <Link

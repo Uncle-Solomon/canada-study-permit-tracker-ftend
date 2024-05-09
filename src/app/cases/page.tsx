@@ -1,17 +1,28 @@
+"use client";
 import CaseCard from "@/components/CaseCard";
+import { useAuthContext } from "@/context";
 import { dummyCases } from "@/dummy";
+import { useRouter } from "next/navigation";
 import React from "react";
 
-const Cases = () => {
+const CasesPage = () => {
+  const { userSession, setUserSession } = useAuthContext();
+  const router = useRouter();
+
   const allCases = dummyCases;
-  console.log(allCases);
-  return (
-    <div className=" flex flex-wrap justify-center">
-      {allCases?.map((item) => (
-        <CaseCard key={item.username} caseInfo={item} />
-      ))}
-    </div>
-  );
+  if (userSession.loggedIn) {
+    console.log(allCases);
+
+    return (
+      <div className=" flex flex-wrap justify-center">
+        {allCases?.map((item) => (
+          <CaseCard key={item.username} info={item} />
+        ))}
+      </div>
+    );
+  } else {
+    router.push("/");
+  }
 };
 
 export default Cases;

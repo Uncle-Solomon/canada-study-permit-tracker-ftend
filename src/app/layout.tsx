@@ -1,5 +1,7 @@
 import { NavBar } from "@/components";
 import "./globals.css";
+import { AuthProvider } from "@/context";
+
 export const metadata = {
   title: "Canadian Study Permit Tracker",
   description:
@@ -14,8 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NavBar />
-        {children}
+        <AuthProvider>
+          <NavBar />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

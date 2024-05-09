@@ -8,20 +8,20 @@ import Image from "next/image";
 interface CaseDetailsProps {
   isOpen: boolean;
   closeModal: () => void;
-  caseInfo: CaseProps;
+  info: CaseProps;
 }
 
-const CaseDetails = ({ isOpen, closeModal, caseInfo }: CaseDetailsProps) => {
+const CaseDetails = ({ isOpen, closeModal, info }: CaseDetailsProps) => {
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-300"
+            enter="ease-out duration-600"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="ease-in duration-200"
+            leave="ease-in duration-500"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
@@ -56,10 +56,10 @@ const CaseDetails = ({ isOpen, closeModal, caseInfo }: CaseDetailsProps) => {
 
                   <div className=" flex-1 flex flex-col gap-2">
                     <h2 className=" font-semibold text-xl capitalize border-b border-1 border-gray-300 pb-4">
-                      {caseInfo.username}
+                      {info.username}
                     </h2>
                     <div className="mt-3 flex flex-wrap gap-4">
-                      {Object.entries(caseInfo).map(([key, value]) => (
+                      {Object.entries(info).map(([key, value]) => (
                         <div
                           key={key}
                           className="flex justify-between gap-5 w-full text-right"

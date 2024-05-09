@@ -4,10 +4,10 @@ import React, { useState } from "react";
 import { CaseDetails } from ".";
 
 interface CaseCardProps {
-  caseInfo: CaseProps;
+  info: CaseProps;
 }
 
-const CaseCard = ({ caseInfo }: CaseCardProps) => {
+const CaseCard = ({ info }: CaseCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const {
@@ -22,7 +22,7 @@ const CaseCard = ({ caseInfo }: CaseCardProps) => {
     elegibility_status,
     background_check_date,
     background_check_status,
-  } = caseInfo;
+  } = info;
 
   function findMostRecentDate(...dates: Date[]): Date {
     // Filter out null or undefined values before comparison
@@ -106,7 +106,7 @@ const CaseCard = ({ caseInfo }: CaseCardProps) => {
       <CaseDetails
         isOpen={isOpen}
         closeModal={() => setIsOpen(false)}
-        caseInfo={caseInfo}
+        info={info}
       />
     </div>
   );

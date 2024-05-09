@@ -8,14 +8,14 @@ const page = () => {
       <h3></h3>
 
       <div className="p-8 border border-1 border-gray-300 rounded-lg ">
-        <CustomForm formType={"signup"} />
+        <CustomForm formType={"verify-mail"} />
       </div>
-      <p>Have an account already?</p>
+      <p>Do not have an account yet?</p>
       <Link
-        href="/"
+        href="/sign-up"
         className=" p-2 border border-1 rounded-xl bg-approved text-white"
       >
-        Log In
+        Sign Up
       </Link>
     </div>
   );
