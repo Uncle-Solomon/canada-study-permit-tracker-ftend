@@ -1,7 +1,7 @@
 import React from "react";
 
-const loading = () => {
+const loadingPage = () => {
   return <div></div>;
 };
 
-export default loading;
+export default loadingPage;

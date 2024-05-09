@@ -25,4 +25,4 @@ const CasesPage = () => {
   }
 };
 
-export default Cases;
+export default CasesPage;
