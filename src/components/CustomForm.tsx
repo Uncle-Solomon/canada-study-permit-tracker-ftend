@@ -3,6 +3,7 @@ import { useAuthContext } from "@/context";
 import { storeLoginSession } from "@/utils";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import CustomButton from "./CustomButton";
 
 const CustomForm = ({ formType }: { formType: string }) => {
   const { userSession, setUserSession } = useAuthContext();
@@ -142,16 +143,7 @@ const CustomForm = ({ formType }: { formType: string }) => {
           <div className="text-red-500 font-semibold my-2">{errorMessage}</div>
         )}
 
-        <button
-          type="submit"
-          className={`p-2  rounded-lg text-white ${
-            isLoading
-              ? "bg-[#ccc] opacity-50 cursor-progress"
-              : "bg-approved opacity-100 cursor-pointer"
-          } font-semibold`}
-        >
-          Submit
-        </button>
+        <CustomButton text="Submit" isLoading={isLoading} />
       </form>
     </div>
   );

@@ -11,6 +11,7 @@ const CreatePage = () => {
       router.push("/"); // Redirect to login page if not logged in
     }
   }, [userSession, router]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [applicationDate, setApplicationDate] = useState(Date); // Date object
   const [applicationStatus, setApplicationStatus] = useState("Submitted"); // Default
@@ -27,13 +28,29 @@ const CreatePage = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     const base_url = process.env.BASE_URL;
 
     try {
-      const response = await fetch(`${base_url}/create`, {
+      const response = await fetch(`${base_url}/case`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({}),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userSession.token}`,
+        },
+        body: JSON.stringify({
+          applicationStatus,
+          applicationDate,
+          biometricDate,
+          biometricStatus,
+          backgroundCheckDate,
+          backgroundCheckStatus,
+          eligibilityDate,
+          eligibilityStatus,
+          pprRequest,
+          medicalDate,
+          medicalStatus,
+        }),
       });
 
       if (!response.ok) {
@@ -42,6 +59,7 @@ const CreatePage = () => {
 
       const data = await response.json();
       console.log("Edit successful:", data);
+      setIsLoading(false);
       if (data) {
         router.push("/");
       }
@@ -51,7 +69,6 @@ const CreatePage = () => {
   };
   return (
     <div>
-      {" "}
       {userSession.loggedIn ? (
         <div>
           <div className=" flex flex-col justify-center ">

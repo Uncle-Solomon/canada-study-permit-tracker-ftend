@@ -60,10 +60,25 @@ const EditPage = () => {
     const base_url = process.env.BASE_URL;
 
     try {
-      const response = await fetch(`${base_url}/edit`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({}),
+      const response = await fetch(`${base_url}/case`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userSession.token}`,
+        },
+        body: JSON.stringify({
+          applicationStatus,
+          applicationDate,
+          biometricDate,
+          biometricStatus,
+          backgroundCheckDate,
+          backgroundCheckStatus,
+          eligibilityDate,
+          eligibilityStatus,
+          pprRequest,
+          medicalDate,
+          medicalStatus,
+        }),
       });
 
       if (!response.ok) {
