@@ -2,6 +2,7 @@
 import CaseCard from "@/components/CaseCard";
 import { useAuthContext } from "@/context";
 import { dummyCases } from "@/dummy";
+import { CaseProps } from "@/types";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -9,7 +10,7 @@ const CasesPage = () => {
   const { userSession, setUserSession } = useAuthContext();
   const router = useRouter();
 
-  const allCases = dummyCases;
+  const allCases: Array<CaseProps> = dummyCases;
   if (userSession.loggedIn) {
     console.log(allCases);
 

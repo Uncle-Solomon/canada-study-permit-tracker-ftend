@@ -10,5 +10,5 @@ export interface CaseProps {
   elegibility_date: Date;
   background_check_status?: string;
   background_check_date: Date;
-  ppr_request?: string;
+  pPR_request?: string;
 }

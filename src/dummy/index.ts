@@ -1,4 +1,6 @@
-export const dummyCases = [
+import { CaseProps } from "@/types";
+
+export const dummyCases: Array<CaseProps> = [
   {
     username: "SimonX",
     application_date: new Date("2024-04-13"), // YYYY-MM-DD format
@@ -11,7 +13,7 @@ export const dummyCases = [
     elegibility_date: new Date("2024-04-31"),
     background_check_status: "Completed",
     background_check_date: new Date("2024-04-21"),
-    pPR_Request: "Yes",
+    pPR_request: "Yes",
   },
   {
     username: "JohnDoe123",
@@ -20,26 +22,26 @@ export const dummyCases = [
     biometric_status: "Submitted",
     biometric_date: new Date("2024-05-06"),
     medical_status: "Pending",
-    medical_Date: new Date("2024-05-03"), // Remains null
+    medical_date: new Date("2024-05-03"), // Remains null
     elegibility_status: "Submitted",
     elegibility_date: new Date("2024-05-03"), // Remains null
     background_check_status: "Not Started",
     background_check_date: new Date("2024-05-03"), // Remains null
-    pPR_Request: "No",
+    pPR_request: "No",
   },
   {
     username: "AliceWonder",
     application_date: new Date("2024-05-03"),
     application_status: "Submitted",
     biometric_status: "Completed",
-    biometri_cDate: new Date("2024-05-03"),
+    biometric_date: new Date("2024-05-03"),
     medical_status: "Passed",
     medical_date: new Date("2024-05-03"),
     elegibility_status: "In Progress",
     elegibility_date: new Date("2024-05-03"),
     background_check_status: "Submitted",
     background_check_date: new Date("2024-05-03"),
-    pPR_Request: "Yes",
+    pPR_request: "Yes",
   },
   {
     username: "BobBuilder10",
@@ -53,12 +55,13 @@ export const dummyCases = [
     elegibility_date: new Date("2024-04-24"), // Corrected invalid date
     background_check_status: "Completed",
     background_check_date: new Date("2024-05-01"),
-    pPR_Request: "No",
+    pPR_request: "No",
   },
   {
     username: "TechSavvy",
     application_date: new Date("2024-05-01"),
     application_status: "Submitted",
+    biometric_date: new Date("2024-04-30"),
     biometric_status: "Not Started",
     medical_status: "N/A",
     medical_date: new Date("2024-05-10"), // Remains null
@@ -66,7 +69,7 @@ export const dummyCases = [
     elegibility_date: new Date("2024-05-10"), // Remains null
     background_check_status: "N/A",
     background_check_date: new Date("2024-05-10"), // Remains null
-    pPR_Request: "Yes",
+    pPR_request: "Yes",
   },
   {
     username: "CharlieBravo",
@@ -80,7 +83,7 @@ export const dummyCases = [
     elegibility_date: new Date("2024-05-15"),
     background_check_status: "Not Started",
     background_check_date: new Date("2024-05-15"),
-    pPR_Request: "No",
+    pPR_request: "No",
   },
   {
     username: "DavidTango",
@@ -94,7 +97,7 @@ export const dummyCases = [
     elegibility_date: new Date("2024-04-05"),
     background_check_status: "Completed",
     background_check_date: new Date("2024-04-10"),
-    pPR_Request: "Yes",
+    pPR_request: "Yes",
   },
   {
     username: "EchoRomeo",
@@ -108,12 +111,13 @@ export const dummyCases = [
     elegibility_date: new Date("2024-04-20"),
     background_check_status: "Submitted",
     background_check_date: new Date("2024-04-27"),
-    pPR_Request: "No",
+    pPR_request: "No",
   },
   {
     username: "FoxtrotZulu",
     application_date: new Date("2024-05-02"),
     application_status: "Submitted",
+    biometric_date: new Date("2024-04-30"),
     biometric_status: "Not Started",
     medical_status: "Pending",
     medical_date: new Date("2024-05-17"),
@@ -121,11 +125,11 @@ export const dummyCases = [
     elegibility_date: new Date("2024-05-17"), // Remains null
     background_check_status: "N/A",
     background_check_date: new Date("2024-05-17"), // Remains null
-    pPR_Request: "Yes",
+    pPR_request: "Yes",
   },
   {
     username: "GolfAlpha",
-    applicationDate: new Date("2024-04-10"),
+    application_date: new Date("2024-04-10"),
     application_status: "Completed",
     biometric_status: "Completed",
     biometric_date: new Date("2024-04-15"),
@@ -135,6 +139,6 @@ export const dummyCases = [
     elegibility_date: new Date("2024-04-25"),
     background_check_status: "Completed",
     background_check_date: new Date("2024-04-30"),
-    pPR_Request: "No",
+    pPR_request: "No",
   },
 ];
