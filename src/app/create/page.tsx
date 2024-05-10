@@ -1,9 +1,8 @@
 "use client";
 import { useAuthContext } from "@/context";
-import { retrieveLoginSession } from "@/utils";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-const createPage = () => {
+import React, { useState } from "react";
+const CreatePage = () => {
   const { userSession, setUserSession } = useAuthContext();
 
   const router = useRouter();
@@ -247,4 +246,4 @@ const createPage = () => {
   }
 };
 
-export default createPage;
+export default CreatePage;
