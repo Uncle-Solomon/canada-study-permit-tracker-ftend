@@ -242,7 +242,6 @@ const CreatePage = () => {
     );
   } else {
     router.push("/");
-    return <div></div>;
   }
 };
 

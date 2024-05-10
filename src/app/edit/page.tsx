@@ -288,7 +288,6 @@ const EditPage = () => {
     );
   } else {
     router.push("/");
-    return <div></div>;
   }
 };
 
