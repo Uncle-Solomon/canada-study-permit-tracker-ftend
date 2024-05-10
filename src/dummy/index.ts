@@ -20,11 +20,11 @@ export const dummyCases = [
     biometric_status: "Submitted",
     biometric_date: new Date("2024-05-06"),
     medical_status: "Pending",
-    medical_Date: null, // Remains null
+    medical_Date: new Date("2024-05-03"), // Remains null
     elegibility_status: "Submitted",
-    elegibility_date: null, // Remains null
+    elegibility_date: new Date("2024-05-03"), // Remains null
     background_check_status: "Not Started",
-    background_check_date: null, // Remains null
+    background_check_date: new Date("2024-05-03"), // Remains null
     pPR_Request: "No",
   },
   {
