@@ -4,14 +4,13 @@ import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 const CreatePage = () => {
   const { userSession, setUserSession } = useAuthContext();
+  const router = useRouter();
 
   useEffect(() => {
     if (!userSession.loggedIn) {
       router.push("/"); // Redirect to login page if not logged in
     }
   }, [userSession, router]);
-
-  const router = useRouter();
 
   const [applicationDate, setApplicationDate] = useState(Date); // Date object
   const [applicationStatus, setApplicationStatus] = useState("Submitted"); // Default

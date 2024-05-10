@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 const EditPage = () => {
   const { userSession, setUserSession } = useAuthContext();
+  const router = useRouter();
 
   useEffect(() => {
     if (!userSession.loggedIn) {
@@ -27,7 +28,6 @@ const EditPage = () => {
     pPR_Request: "Yes",
   };
 
-  const router = useRouter();
   const [applicationDate, setApplicationDate] = useState(
     caseInfo.application_date
   ); // Date object
