@@ -3,7 +3,7 @@ import { useAuthContext } from "@/context";
 import { dummyCases } from "@/dummy";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-const editPage = () => {
+const EditPage = () => {
   const { userSession, setUserSession } = useAuthContext();
 
   const caseInfo = {
@@ -292,4 +292,4 @@ const editPage = () => {
   }
 };
 
-export default editPage;
+export default EditPage;
