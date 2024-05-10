@@ -243,6 +243,7 @@ const createPage = () => {
     );
   } else {
     router.push("/");
+    return <div></div>;
   }
 };
 
