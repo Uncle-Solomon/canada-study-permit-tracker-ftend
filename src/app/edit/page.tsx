@@ -1,7 +1,7 @@
 "use client";
 import { useAuthContext } from "@/context";
 import { dummyCases } from "@/dummy";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 const EditPage = () => {
   const { userSession, setUserSession } = useAuthContext();
