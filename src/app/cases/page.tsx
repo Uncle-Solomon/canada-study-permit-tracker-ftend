@@ -16,7 +16,7 @@ const CasesPage = () => {
     if (!userSession.loggedIn) {
       router.push("/"); // Redirect to login page if not logged in
     }
-  }, [userSession]); // Dependency on userSession ensures effect runs only on change
+  }, [userSession, router]); // Dependency on userSession ensures effect runs only on change
 
   return (
     <div className=" flex flex-wrap justify-center">

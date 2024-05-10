@@ -9,7 +9,7 @@ const CreatePage = () => {
     if (!userSession.loggedIn) {
       router.push("/"); // Redirect to login page if not logged in
     }
-  }, [userSession]);
+  }, [userSession, router]);
 
   const router = useRouter();
 
