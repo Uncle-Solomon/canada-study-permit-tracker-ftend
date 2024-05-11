@@ -1,17 +1,17 @@
 "use client";
 import CaseCard from "@/components/CaseCard";
 import { useAuthContext } from "@/context";
-import { dummyCases } from "@/dummy";
+// import { dummyCases } from "@/dummy";
 import { CaseProps } from "@/types";
-import { Console } from "console";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const CasesPage = () => {
   const { userSession, setUserSession } = useAuthContext();
+  const [allCases, setAllCases] = useState<Array<CaseProps>>([]);
   const router = useRouter();
 
-  let allCases: Array<CaseProps> = [];
+  // let allCases: Array<CaseProps> = [];
   const handleFetch = async () => {
     const base_url = process.env.NEXT_PUBLIC_API_URL;
 
@@ -32,8 +32,7 @@ const CasesPage = () => {
       console.log("fetch successful:", data);
       if (data) {
         console.log(data);
-        allCases = data.data;
-        return allCases;
+        setAllCases(data.data);
       }
     } catch (error: any) {}
   };
@@ -46,11 +45,16 @@ const CasesPage = () => {
 
   useEffect(() => {
     handleFetch();
-  }, [allCases]);
+  }, []);
   return (
     <div className=" flex flex-wrap justify-center">
       {userSession.loggedIn ? (
         <div>
+          <div>
+            {allCases.map((item) => (
+              <p key={item.username}>{item.application_status}</p>
+            ))}
+          </div>
           {allCases.map((item) => (
             <CaseCard key={item.username} info={item} />
           ))}

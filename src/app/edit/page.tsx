@@ -1,11 +1,50 @@
 "use client";
 import { useAuthContext } from "@/context";
 import { dummyCases } from "@/dummy";
+import { CaseProps } from "@/types";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 const EditPage = () => {
   const { userSession, setUserSession } = useAuthContext();
+  const [allCases, setAllCases] = useState<CaseProps>();
+  const [errorMessage, setErrorMessage] = useState(null);
+
   const router = useRouter();
+
+  const handleFetch = async () => {
+    const base_url = process.env.NEXT_PUBLIC_API_URL;
+
+    try {
+      const response = await fetch(`${base_url}/cases/${userSession.user}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userSession.token}`,
+        },
+      });
+
+      if (response.status === 404) {
+        throw new Error("You do not have any cases to edit");
+      }
+
+      if (!response.ok) {
+        throw new Error(`Creation failed: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("fetch successful:", data);
+      if (data) {
+        console.log(data);
+        setAllCases(data.data);
+      }
+    } catch (error: any) {
+      setErrorMessage(error.message);
+    }
+  };
+
+  useEffect(() => {
+    handleFetch();
+  }, []);
 
   useEffect(() => {
     if (!userSession.loggedIn) {
@@ -13,54 +52,38 @@ const EditPage = () => {
     }
   }, [userSession, router]);
 
-  const caseInfo = {
-    username: "TechSavvy",
-    application_date: new Date("2024-05-01"),
-    application_status: "Submitted",
-    biometric_status: "Not Started",
-    biometric_date: new Date("2024-03-10"),
-    medical_status: "N/A",
-    medical_date: new Date("2024-05-10"), // Remains null
-    elegibility_status: "Completed",
-    elegibility_date: new Date("2024-05-10"), // Remains null
-    background_check_status: "N/A",
-    background_check_date: new Date("2024-05-10"), // Remains null
-    pPR_Request: "Yes",
-  };
-
   const [applicationDate, setApplicationDate] = useState(
-    caseInfo.application_date
+    allCases?.application_date
   ); // Date object
   const [applicationStatus, setApplicationStatus] = useState(
-    caseInfo.application_status
+    allCases?.application_status
   ); // Default
   const [biometricStatus, setBiometricStatus] = useState(
-    caseInfo.biometric_status
+    allCases?.biometric_status
   ); // Default
-  const [biometricDate, setBiometricDate] = useState(caseInfo.biometric_date); // Default
-  const [medicalStatus, setMedicalStatus] = useState(caseInfo.medical_status); // Default
-  const [medicalDate, setMedicalDate] = useState(caseInfo.medical_date); // Optional Date object
+  const [biometricDate, setBiometricDate] = useState(allCases?.biometric_date); // Default
+  const [medicalStatus, setMedicalStatus] = useState(allCases?.medical_status); // Default
+  const [medicalDate, setMedicalDate] = useState(allCases?.medical_date); // Optional Date object
   const [eligibilityStatus, setEligibilityStatus] = useState(
-    caseInfo.elegibility_status
+    allCases?.elegibility_status
   ); // Default
   const [eligibilityDate, setEligibilityDate] = useState(
-    caseInfo.elegibility_date
+    allCases?.elegibility_date
   ); // Optional Date object
   const [backgroundCheckStatus, setBackgroundCheckStatus] = useState(
-    caseInfo.background_check_status
+    allCases?.background_check_status
   ); // Default
   const [backgroundCheckDate, setBackgroundCheckDate] = useState(
-    caseInfo.background_check_date
+    allCases?.background_check_date
   ); // Optional Date object
-  const [pprRequest, setPprRequest] = useState(caseInfo.pPR_Request); // Default
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [pprRequest, setPprRequest] = useState(allCases?.pPR_request); // Default
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const base_url = process.env.BASE_URL;
+    const base_url = process.env.NEXT_PUBLIC_API_URL;
 
     try {
-      const response = await fetch(`${base_url}/case`, {
+      const response = await fetch(`${base_url}/cases`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -83,6 +106,10 @@ const EditPage = () => {
 
       if (!response.ok) {
         throw new Error(`Edit failed: ${response.status}`);
+      }
+
+      if (response.status === 401) {
+        router.push("/login");
       }
 
       const data = await response.json();

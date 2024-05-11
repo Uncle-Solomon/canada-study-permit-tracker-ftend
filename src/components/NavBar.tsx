@@ -10,8 +10,10 @@ const NavBar = () => {
   const router = useRouter();
   return (
     <header className=" w-full">
-      <nav className=" max-w-[1440px] mx-auto flex justify-between items-center sm:px-16 px-6 py-4 my-2">
-        <h1>Canadian Study Permit Tracker</h1>
+      <nav className=" max-w-[1440px] mx-auto flex justify-between items-center sm:px-16 px-6 py-4 my-2 ">
+        <h1 className="text-xs md:text-base lg:text-lg">
+          Canadian Study Permit Tracker
+        </h1>
 
         {userSession.loggedIn && (
           <div className=" flex gap-2">
@@ -34,6 +36,7 @@ const NavBar = () => {
 
                 router.push("/");
               }}
+              className="text-xs md:text-base lg:text-lg"
             >
               Sign Out
             </button>

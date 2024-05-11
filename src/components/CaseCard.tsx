@@ -10,7 +10,7 @@ interface CaseCardProps {
 const CaseCard = ({ info }: CaseCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const {
+  let {
     username,
     application_date,
     application_status,
@@ -23,6 +23,12 @@ const CaseCard = ({ info }: CaseCardProps) => {
     background_check_date,
     background_check_status,
   } = info;
+
+  application_date = new Date(application_date);
+  biometric_date = new Date(biometric_date);
+  medical_date = new Date(medical_date);
+  elegibility_date = new Date(elegibility_date);
+  background_check_date = new Date(background_check_date);
 
   function findMostRecentDate(...dates: Date[]): Date {
     // Filter out null or undefined values before comparison

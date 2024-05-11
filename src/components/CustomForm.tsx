@@ -32,7 +32,7 @@ const CustomForm = ({ formType }: { formType: string }) => {
         const data = await response.json();
         // console.log("Login successful:", data);
         if (data) {
-          console.log(data);
+          // console.log(data);
           if (data.success === true) {
             router.push("/verify-mail");
           } else {
@@ -53,7 +53,7 @@ const CustomForm = ({ formType }: { formType: string }) => {
         const data = await response.json();
         // console.log("Login successful:", data);
         if (data) {
-          console.log(data);
+          // console.log(data);
           if (data.success === true) {
             setUserSession({
               user: username,
@@ -80,7 +80,7 @@ const CustomForm = ({ formType }: { formType: string }) => {
         const data = await response.json();
         // console.log("Login successful:", data);
         if (data) {
-          console.log(data);
+          // console.log(data);
           if (data.success === true) {
             router.push("/");
           } else {
