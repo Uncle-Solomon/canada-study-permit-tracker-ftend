@@ -33,9 +33,9 @@ const CreatePage = () => {
       }
 
       const data = await response.json();
-      console.log("fetch successful:", data);
+      // console.log("fetch successful:", data);
       if (data) {
-        console.log(data);
+        // console.log(data);
         setIsPageLoading(false);
         alert("You already have a case");
         router.push("/edit");
@@ -95,7 +95,7 @@ const CreatePage = () => {
       }
 
       const data = await response.json();
-      console.log("Edit successful:", data);
+      // console.log("Edit successful:", data);
       setIsLoading(false);
       if (data) {
         router.push("/");

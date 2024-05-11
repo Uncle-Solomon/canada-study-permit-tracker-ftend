@@ -29,9 +29,9 @@ const CasesPage = () => {
       }
 
       const data = await response.json();
-      console.log("fetch successful:", data);
+      // console.log("fetch successful:", data);
       if (data) {
-        console.log(data);
+        // console.log(data);
         setAllCases(data.data);
       }
     } catch (error: any) {}
